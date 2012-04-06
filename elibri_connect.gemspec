@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Gem designed to allow easy addition of elibri based product system to your application.
   Currently tested and support only on REE - due to dependencies."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 3.2.0"
   s.add_dependency "acts_as_elibri_product"
