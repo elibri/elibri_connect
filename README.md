@@ -5,6 +5,10 @@
 Elibri Xml Versions: [![Build Status](https://secure.travis-ci.org/elibri/elibri_xml_versions.png?branch=master)](http://travis-ci.org/elibri/elibri_xml_versions)  
 Elibri Onix Mocks: [![Build Status](https://secure.travis-ci.org/elibri/elibri_onix_mocks.png?branch=master)](http://travis-ci.org/elibri/elibri_onix_mocks)  
 Acts as Elibri Product: [![Build Status](https://secure.travis-ci.org/elibri/acts_as_elibri_product.png?branch=master)](http://travis-ci.org/elibri/acts_as_elibri_product)  
+Elibri Onix Dict: [![Build Status](https://secure.travis-ci.org/elibri/elibri_onix_dict.png?branch=master)](http://travis-ci.org/elibri/elibri_onix_dict)  
+Elibri Onix: [![Build Status](https://secure.travis-ci.org/elibri/elibri_onix.png?branch=master)](http://travis-ci.org/elibri/elibri_onix)  
+Elibri Api Client: [![Build Status](https://secure.travis-ci.org/elibri/elibri_api_client.png?branch=master)](http://travis-ci.org/elibri/elibri_api_client)  
+
 
 ### Elibri Connect: ###
 [![Build Status](https://secure.travis-ci.org/elibri/elibri_connect.png?branch=master)](http://travis-ci.org/elibri/elibri_connect)
