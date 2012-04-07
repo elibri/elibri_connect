@@ -5,7 +5,7 @@
 
 namespace :elibri do
   desc "Load products from elibri - creating and updating product where needed"
-  task :update_products do
+  task :update_products => :environment do
     Elibri::Connect.update_products!
   end
 end
