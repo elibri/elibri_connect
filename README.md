@@ -17,7 +17,7 @@ Elibri Api Client: [![Build Status](https://secure.travis-ci.org/elibri/elibri_a
 ## Description ##
 
 Gem designed to allow easy addition of elibri based product system to your application.
-Currently tested and support only on REE - due to dependencies.
+Currently tested and supported 1.8.7 versions of ruby (MRI, rbx, REE).
 
 ## Usage ##
 
