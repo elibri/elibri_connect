@@ -38,6 +38,16 @@ If you need to access raw api client - you can get it by invoking `Elibri::Conne
 
 Gem has additional mode of operation called test_mode - you can get into it, by setting `test_mode=true` inside configuration file. When using it your application will not connect to elibri, instead it will use elibri_xml_mocks to mock and create product for your app.
 
+Also when installed elibri_connect you will receive method to look into related products imported from elibri.
+There is one to many relationship between product and related_products.
+You can use it, like this:
+
+```ruby
+product.related_products #list of related objects
+product.related_products.objects #list of actual products related to our
+product.related_products.first.object #actual product that is related
+```
+
 ## Anatomy of config file ##
 
 Config file looks like this, and needs to be in config/initializers directory (generate command can provide one for you):  
