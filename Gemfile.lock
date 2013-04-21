@@ -58,7 +58,7 @@ GEM
     elibri_onix_dict (0.0.22)
     elibri_onix_generator (0.1.10)
       builder
-    elibri_onix_mocks (0.1.8)
+    elibri_onix_mocks (0.1.9)
       activesupport
       builder
       elibri_api_client
@@ -88,7 +88,7 @@ GEM
     mime-types (1.23)
     mocha (0.13.3)
       metaclass (~> 0.0.1)
-    multi_json (1.7.1)
+    multi_json (1.7.2)
     multi_xml (0.5.3)
     nokogiri (1.5.9)
     polyglot (0.3.3)
