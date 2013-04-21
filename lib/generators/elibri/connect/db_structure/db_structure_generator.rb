@@ -25,6 +25,23 @@ module Elibri
       attr_accessible :import_id, :text, :text_type, :text_author, :source_title, :resource_link
 
     end}
+    
+        create_file "app/models/related_product.rb",
+      %Q{class RelatedProduct < ActiveRecord::Base
+        attr_accessible :onix_code, :product_id, :related_record_reference
+
+        belongs_to :product
+
+        def object
+          Product.where(:record_reference => related_record_reference).first
+        end
+
+        def self.objects
+          joins(:product).first.product.related_products.map { |x| Product.where(:record_reference => x.related_record_reference).first }.compact
+        end
+
+      end}
+        
         create_file "app/models/product.rb",
     %Q[class Product < ActiveRecord::Base
 
@@ -32,7 +49,15 @@ module Elibri
         product.has_many :contributors
         product.has_many :product_texts
         product.has_one :imprint
+        product.has_many :related_products
       end
+      
+      HEIGHT_UNIT = 'mm'
+      WIDTH_UNIT = 'mm'
+      THICKNESS_UNIT = 'mm'
+      WEIGHT_UNIT = 'gr'
+      FILE_SIZE_UNIT = 'MB'
+      DURATION_UNIT = 'min'
 
       attr_accessible :isbn, :title, :full_title, :trade_title, :original_title, :publication_year,
                       :publication_month, :publication_day, :number_of_pages, :width, :height, 
@@ -40,7 +65,7 @@ module Elibri
                       :price_amount, :vat, :current_state, :product_form, :old_xml
 
       #on left side elibri attributes, on right side our name of attribute               
-      acts_as_elibri_product :record_reference => :record_reference,
+      acts_as_elibri_product :record_reference => :record_reference, #very important attribute!
              :isbn13 => :isbn,
              :title => :title,
              :full_title => :full_title,
@@ -73,6 +98,12 @@ module Elibri
                  :biographical_note => :biography
                }
              },
+             :related_products => {
+                :related_products => {
+                  :record_reference => :related_record_reference,
+                  :relation_code => :onix_code
+                }
+              },
              :text_contents => {
                :product_texts => {
                  :id => :import_id,
