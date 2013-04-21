@@ -17,22 +17,27 @@ module Elibri
     
     def self.api_client
       Elibri::ApiClient.new(:login => login, :password => password, 
-                                  :api_version => api_version, :onix_dialect => onix_dialect)
+                            :api_version => api_version, :onix_dialect => onix_dialect)
     end
-    
-    def self.update_products!
+
+    def self.update_products(refill_queue = false)
       if test_mode
         book = Elibri::XmlMocks::Examples.book_example
         (self.product_model).to_s.capitalize.constantize.batch_create_or_update_from_elibri(Elibri::ONIX::XMLGenerator.new(book).to_s)
       else
         api = Elibri::ApiClient.new(:login => login, :password => password, 
                                     :api_version => api_version, :onix_dialect => onix_dialect)
-        api.refill_all_queues! 
-        while (queue = api.pending_queues.find { |q| q.name == 'meta' })    
+
+        api.refill_all_queues! if refill_queue
+        while (queue = api.pending_queues.find { |q| q.name == 'meta' })
           response = api.pop_from_queue('meta', :count => 25)                            
           (self.product_model).to_s.capitalize.constantize.batch_create_or_update_from_elibri(response.onix)
         end
       end
+    end
+
+    def self.update_products!
+      self.update_products(true)
     end
   
   end

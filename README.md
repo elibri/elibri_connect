@@ -33,7 +33,7 @@ Now - depending on your situation you may choose one of four options:
 
 If you have working application, and you need to add support to existing product model - please look here for more information about adding acts_as_elibri_product declaration to model (including traverse vector examples): [elibri/acts_as_elibri_product](https://github.com/elibri/acts_as_elibri_product)
 
-After creation of config file, gem will provide you with rake task: `rake elibri:update_products` which will connect to elibri, download new and update existing product. You can also use it from your code using `Elibri::Connect.update_products!` method.  
+After creation of config file, gem will provide you with rake task: `rake elibri:update_products` which will connect to elibri, download new and update existing product. You can also use it from your code using `Elibri::Connect.update_products` method.  
 If you need to access raw api client - you can get it by invoking `Elibri::Connect.api_client`.  
 
 Gem has additional mode of operation called test_mode - you can get into it, by setting `test_mode=true` inside configuration file. When using it your application will not connect to elibri, instead it will use elibri_xml_mocks to mock and create product for your app.

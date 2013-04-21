@@ -4,8 +4,14 @@
 # end
 
 namespace :elibri do
-  desc "Load products from elibri - creating and updating product where needed"
-  task :update_products => :environment do
+  desc "Load products from elibri (refill queue) - creating and updating product where needed"
+  task :update_products! => :environment do
     Elibri::Connect.update_products!
   end
+
+  desc "Load products from elibri - creating and updating product where needed"
+  task :update_products => :environment do
+    Elibri::Connect.update_products
+  end
+  
 end

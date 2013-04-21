@@ -5,7 +5,7 @@ module Elibri
       def whenever
         create_file "config/schedule.rb", 
     %Q{every 6.hours do
-      runner "Elibri::Connect.update_products!"
+      runner "Elibri::Connect.update_products"
     end}
       end
     end
