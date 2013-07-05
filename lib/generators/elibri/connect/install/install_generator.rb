@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module Elibri
   module Connect
     class InstallGenerator < Rails::Generators::Base

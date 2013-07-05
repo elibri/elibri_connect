@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Elibri::Connect.setup do |config|
   config.login = 'login'
   config.password = 'password'

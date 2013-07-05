@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'elibri_connect'
 require 'rails'
 module ElibriConnect

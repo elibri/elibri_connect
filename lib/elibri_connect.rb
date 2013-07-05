@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'acts_as_elibri_product'
 require 'elibri_api_client'
 require 'elibri_onix_mocks'
@@ -8,7 +9,7 @@ module Elibri
   module Connect
   
     class << self
-      attr_accessor :login, :password, :api_version, :onix_dialect, :test_mode, :product_model
+      attr_accessor :login, :password, :api_version, :onix_dialect, :test_mode, :product_model, :tracing_object
     end
     
     def self.setup(&block)
@@ -31,7 +32,7 @@ module Elibri
         api.refill_all_queues! if refill_queue
         while (queue = api.pending_queues.find { |q| q.name == 'meta' })
           response = api.pop_from_queue('meta', :count => 25)                            
-          (self.product_model).to_s.capitalize.constantize.batch_create_or_update_from_elibri(response.onix)
+          (self.product_model).to_s.capitalize.constantize.batch_create_or_update_from_elibri(response.onix, self.tracing_object)
         end
       end
     end
