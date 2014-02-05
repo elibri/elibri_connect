@@ -9,7 +9,7 @@ module Elibri
   module Connect
   
     class << self
-      attr_accessor :login, :password, :api_version, :onix_dialect, :test_mode, :product_model, :tracing_object
+      attr_accessor :login, :password, :api_version, :onix_dialect, :test_mode, :product_model, :tracing_object, :batch_size
     end
     
     def self.setup(&block)
@@ -31,8 +31,14 @@ module Elibri
 
         api.refill_all_queues! if refill_queue
         while (queue = api.pending_queues.find { |q| q.name == 'meta' })
-          response = api.pop_from_queue('meta', :count => 25)                            
-          (self.product_model).to_s.capitalize.constantize.batch_create_or_update_from_elibri(response.onix, self.tracing_object)
+          response = api.pop_from_queue('meta', :count => self.batch_size || 25)
+          begin
+            (self.product_model).to_s.capitalize.constantize.batch_create_or_update_from_elibri(response.onix, self.tracing_object)
+          rescue NoMethodError
+            if self.tracing_object
+              self.tracing_object.register_exception($!, response.onix)
+            end
+          end
         end
       end
     end
