@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.0"
   s.add_dependency "acts_as_elibri_product"
   s.add_dependency "elibri_api_client"
-  s.add_dependency "elibri_onix_mocks"
+  s.add_development_dependency "elibri_onix_mocks"
   s.add_dependency "whenever"
 
   s.add_development_dependency "sqlite3"
