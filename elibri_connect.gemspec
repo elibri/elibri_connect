@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", "~> 3.2.0"
+  s.add_dependency "rails"
   s.add_dependency "acts_as_elibri_product"
   s.add_dependency "elibri_api_client"
   s.add_dependency "elibri_onix_mocks"
